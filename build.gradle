@@ -19,6 +19,10 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
+apply plugin: 'pmd'
+
+
+
 group = 'mx.edu.uacm'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -34,4 +38,27 @@ dependencies {
 	//compile("com.h2database:h2")
 	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
 	compile("mysql:mysql-connector-java:5.1.31")
+}
+pmd {
+  ignoreFailures = true
+   pmdTest.enabled=false
+   ruleSets = [
+           'java-basic',
+           'java-braces',
+           'java-clone',
+           'java-codesize',
+           'java-comments',
+           'java-controversial',
+           'java-coupling',
+           'java-design',
+           'java-empty',
+           'java-finalizers',
+           'java-imports',
+           'java-optimizations',
+           'java-strictexception',
+           'java-strings',
+           'java-typeresolution',
+           'java-unnecessary',
+           'java-unusedcode'
+   ]
 }
