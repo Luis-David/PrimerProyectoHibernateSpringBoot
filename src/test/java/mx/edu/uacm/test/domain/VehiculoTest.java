@@ -2,11 +2,16 @@ package mx.edu.uacm.test.domain;
 
 
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +44,8 @@ public class VehiculoTest {
 		
 		//Se aguarda el objeto vehiculo en BD
 		vehiculoRepository.save(v);
-		
+		Assert.assertNotNull(v.getId());
+		Assert.assertThat(v.getId(),is(notNullValue()));
 	}
 	
 	@Test
@@ -53,7 +59,11 @@ public class VehiculoTest {
 		Vehiculo vehiculo= new Vehiculo();
 		vehiculo.setModelo("2019");
 		vehiculo.setAccesorios(accesorios);
-		vehiculoRepository.save(vehiculo);
+		vehiculo=vehiculoRepository.save(vehiculo);
+		Optional<Vehiculo> op=vehiculoRepository.findById(vehiculo.getId());
+		Vehiculo vehiculoActual=op.get();
+		
+		
 	}
 
 }
