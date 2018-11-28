@@ -59,10 +59,12 @@ public class VehiculoTest {
 		Vehiculo vehiculo= new Vehiculo();
 		vehiculo.setModelo("2019");
 		vehiculo.setAccesorios(accesorios);
-		vehiculo=vehiculoRepository.save(vehiculo);
+		vehiculo=vehiculoRepository.save(vehiculo);/*
 		Optional<Vehiculo> op=vehiculoRepository.findById(vehiculo.getId());
-		Vehiculo vehiculoActual=op.get();
+		Vehiculo vehiculoActual=op.get();*/
+		Vehiculo vehiculoActual = vehiculoRepository.findById(vehiculo.getId()).orElse(null);
 		
+		Assert.assertTrue(vehiculoActual.getAccesorios().size()>1);
 		
 	}
 

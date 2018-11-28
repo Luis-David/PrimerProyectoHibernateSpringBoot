@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +24,7 @@ public class Vehiculo {
 	private String modelo;
 	
 	//@OneToMany(mappedBy="accesorio")
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true,fetch=FetchType.EAGER)
 	private List<Accesorio> accesorios= new ArrayList<Accesorio>();
 	/**
 	 * @return the id
@@ -56,6 +57,10 @@ public class Vehiculo {
 	public void setAccesorios(List<Accesorio> accesorios) {
 		this.accesorios=accesorios;
 		
+	}
+
+	public List<Accesorio> getAccesorios() {
+		return accesorios;
 	}
 	
 	

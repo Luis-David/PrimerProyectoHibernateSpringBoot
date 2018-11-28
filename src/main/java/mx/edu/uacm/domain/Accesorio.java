@@ -12,6 +12,9 @@ public class Accesorio {
 	private Long id;
 	@Column
 	private String nombreAccesorio;
+	public Accesorio() {
+		
+	}
 	public Accesorio(String nombreAccesorio) {
 		this.nombreAccesorio=nombreAccesorio;
 	}
